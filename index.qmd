@@ -1,0 +1,154 @@
+---
+title: "Vaccination Impact: A Global Health & Economic Perspective"
+author: "Sanket Salke (DCU ID: 12977)"
+format:
+  html:
+    theme: journal
+    toc: true
+    toc-depth: 2
+    embed-resources: true
+    code-fold: true
+editor:
+  chunk-output: console
+---
+
+
+## **Introduction**
+
+This report explores global **vaccination coverage[^1]** This report explores the critical role of vaccination in enhancing public health. Our analysis shows that between **2000 and 2023,** global vaccination coverage increased by **20%**, while average life expectancy rose by 10 years. Regional data reveals that countries with strong economic and healthcare support achieve vaccination rates above **90%**, compared to around 70% in less resourced nations.
+
+![](unicef_im_01.webp){width="550px" alt="UNICEF Image"}
+
+
+*The Tableau Version of this Report can be access from [Click Here to Access](https://public.tableau.com/views/VaccinationImpactAGlobalHealthEconomicPerspectiveSanketSalke/VaccinationImpactAGlobalHealthEconomicPerspectiveSanketSalke?:language=en-GB&:sid=&:display_count=n&:origin=viz_share_link).
+
+## 📈 **Vaccination Coverage and Life Expectancy Over Time**
+
+Between 2000 and 2023, global vaccination coverage[^1] climbed from 65% to 85%, mirroring life expectancy gains.
+
+**"On avg. close to 85% of the global population was immunized as of 2022"**
+
+**STEADY INCREASE IN VACCINATION COVERAGE OVER THE YEARS, 
+PARALLELED BY A RISE IN LIFE EXPECTANCY**
+<div style="margin:1em 0">
+  <iframe src="time_series.html" width="100%" height="500" frameBorder="10"></iframe>
+</div> 
+**Pandemic Impact (2020–2021)**
+During 2020 and 2021, both vaccination coverage and life expectancy experienced a noticeable dip, coverage fell from roughly 85% down to 82%, while life expectancy dipped by 0.5 years. This reversal aligns with the global COVID-19 crisis, which strained healthcare systems, disrupted routine immunization campaigns, and diverted resources toward emergency response. It highlights the vulnerability of preventive health services during major outbreaks and underscores the need for resilient delivery systems that can maintain essential vaccinations even under pandemic pressures.
+
+## 🌐 **Geographic Comparison of Global Vaccination Coverage**
+
+This map highlights the latest RCV1 vaccination coverage by country, revealing stark disparities—from nearly 100% in some nations to under 50% in others.
+<div style="margin: 1em 0;">
+  <iframe 
+    src="map.html" 
+    width="100%" 
+    height="600" 
+    frameBorder="0"
+  ></iframe>
+</div>
+
+## 💰 GDP per Capita vs. Vaccination Coverage
+
+This scatterplot shows how higher GDP per capita generally aligns with higher vaccination coverage, with a regression trendline highlighting the positive correlation.
+
+<div style="margin: 1em 0;">
+  <iframe
+    src="scatter.html"
+    width="100%"
+    height="500"
+    frameBorder="0"
+  ></iframe>
+</div>
+
+## 📊 Top 10 Vaccination Coverage Growth
+
+These countries achieved the fastest increase in RCV1 coverage between their first and most recent reporting years, highlighting effective immunization campaigns.
+
+<div style="margin: 1em 0;">
+  <iframe
+    src="bar.html"
+    width="100%"
+    height="500"
+    frameBorder="0"
+  ></iframe>
+</div>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[^1]: Here, “vaccination coverage” refers to the first‑dose Rubella‑containing vaccine (RCV1).
+=======
+title: "Vaccination Impact: A Global Health & Economic Perspective"
+author: "Your Name (UNICEF Data Analyst)"
+format:
+  html:
+    embed-resources: true
+    code-fold: true
+    theme: minty
+---
+
+## 🌍 Introduction
+
+> Despite remarkable progress in global vaccination coverage, millions remain vulnerable—highlighting persistent disparities in healthcare access and economic development.
+
+From 2000 to 2023:
+- Global vaccination coverage rose from **65% to 85%**
+- Life expectancy increased from **68 to 76 years**
+>>>>>>> f0e8aeb7eb4a8ebc2c4e34a5662a2d268f223cd4
