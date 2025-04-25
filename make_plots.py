@@ -62,14 +62,20 @@ fig1.update_layout(
 fig1.write_html("time_series.html", include_plotlyjs="cdn")
 print("✓ time_series.html generated")
 
-#2 ─── Interactive Map with Continent Dropdown & Year Slider ───
+# ─── Interactive Map with Continent Dropdown & Year Slider ───
+import plotly.express as px
+
+# 1) Prepare years & continents
 years = sorted(df["time_period"].unique())
 continents = ["All"] + sorted(df["continent"].dropna().unique())
 
-# 1) Display the **latest** year by default
-init_year = years[-1]      # was years[0]
+# 2) Filter to the latest year
+init_year = years[-1]
 df0 = df[df.time_period == init_year]
 
+print("▶ Starting map generation")
+
+# 3) Create the choropleth
 fig = px.choropleth(
     df0,
     locations="alpha_3_code",
@@ -79,12 +85,7 @@ fig = px.choropleth(
     title=f"RCV1 Coverage in All Continents ({init_year})"
 )
 
-# … build your continent dropdown exactly as before …
-# ─── Add Continent Dropdown ───
-# Build a list of continents (you already created df["continent"])
-continents = ["All"] + sorted(df["continent"].dropna().unique())
-
-# Create one button per continent
+# 4) Build continent dropdown buttons
 buttons = []
 for cont in continents:
     if cont == "All":
@@ -102,7 +103,7 @@ for cont in continents:
         ]
     ))
 
-# Inject the dropdown into the layout
+# 5) Attach dropdown to layout
 fig.update_layout(
     updatemenus=[dict(
         buttons=buttons,
@@ -112,10 +113,8 @@ fig.update_layout(
         showactive=True
     )]
 )
-# ───────────────────────────────
 
-
-# 2) Build the year‐slider steps
+# 6) Build year‐slider steps
 steps = []
 for year in years:
     dff = df[df.time_period == year]
@@ -124,9 +123,22 @@ for year in years:
         label=str(year),
         args=[
             {"locations": [dff["alpha_3_code"]], "z": [dff["obs_value"]]},
-            {"title":f"Global Vaccination Coverage ({year})"}
+            {"title": f"RCV1 Coverage in All Continents ({year})"}
         ]
     ))
+
+# 7) Attach slider to layout (after dropdown)
+fig.update_layout(
+    sliders=[dict(
+        active=len(steps)-1,   # default to latest year
+        pad={"t":50},
+        steps=steps
+    )]
+)
+
+# 8) Write out the HTML
+fig.write_html("map.html", include_plotlyjs="cdn")
+print("✓ map.html with continent dropdown & year slider generated")
 
 #3 ─── Scatter: GDP vs. Vaccination Coverage with Full 1980–2023 Slider ───
 import plotly.express as px
