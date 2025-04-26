@@ -2207,6 +2207,39 @@ vertical-align: -.125em;
 <strong>CODE</strong>
 </summary>
 <pre><code>
+import pandas as pd
+import plotly.express as px
+import pycountry
+import pycountry_convert as pc
+
+def iso3_to_continent(alpha3):
+    try:
+        country = pycountry.countries.get(alpha_3=alpha3)
+        if not country:
+            return &quot;Other&quot;
+        iso2 = country.alpha_2
+        cont_code = pc.country_alpha2_to_continent_code(iso2)
+        return {
+            &quot;AF&quot;: &quot;Africa&quot;,
+            &quot;AS&quot;: &quot;Asia&quot;,
+            &quot;EU&quot;: &quot;Europe&quot;,
+            &quot;NA&quot;: &quot;North America&quot;,
+            &quot;OC&quot;: &quot;Oceania&quot;,
+            &quot;SA&quot;: &quot;South America&quot;,
+            &quot;AN&quot;: &quot;Antarctica&quot;
+        }.get(cont_code, &quot;Other&quot;)
+    except:
+        return &quot;Other&quot;
+
+
+# Load &amp; merge data
+df_ind = pd.read_csv(&quot;unicef_indicator_2.csv&quot;)
+df_meta = pd.read_csv(&quot;unicef_metadata.csv&quot;)
+df = pd.merge(df_ind, df_meta, on=[&quot;alpha_3_code&quot;,&quot;time_period&quot;], how=&quot;left&quot;)
+
+# Add continent information
+df[&quot;continent&quot;] = df[&quot;alpha_3_code&quot;].apply(iso3_to_continent)
+print(&quot;Continents found:&quot;, sorted(df[&quot;continent&quot;].unique()))
 
 # 1) Time‐Series HTML
 ts = df.groupby(&quot;time_period&quot;, as_index=False).agg({
